@@ -1,0 +1,20 @@
+import argparse
+from datetime import datetime
+
+# Initialize the argument parser
+parser = argparse.ArgumentParser(description='Calculate birth year based on age.')
+
+# Define the --age argument
+parser.add_argument('--age', type=int, required=True, help='Your current age')
+
+# Parse the arguments
+args = parser.parse_args()
+
+# Get the current year
+current_year = datetime.now().year
+
+# Calculate the birth year
+birth_year = current_year - args.age
+
+# Print the birth year
+print(f'You were born in the year {birth_year}.')

@@ -1,6 +1,9 @@
 import argparse
 import requests
 import json
+from rich.console import Console
+from rich.markdown import Markdown
+import rich
 
 #==================================
 # python3 ai.py --q 'tell me a joke'
@@ -45,7 +48,15 @@ try:
     # Check if the request was successful
     if response.status_code == 200:
         response_result = response.json()
-        print('\nANSWERS:\n\n' + response_result['choices'][0]['message']['content'])
+        jawapan = response_result['choices'][0]['message']['content']
+        # print('\nANSWERS:\n\n' + jawapan)
+
+        # console = Console()
+        # console.print(jawapan)
+
+        markdown = Markdown(jawapan)
+        rich.print(markdown)
+
     else:
         print(f'Error: {response.status_code} - {response.text}')
 except Exception as e:

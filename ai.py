@@ -4,6 +4,7 @@ import json
 from rich.console import Console
 from rich.markdown import Markdown
 import rich
+import envdata
 
 #==================================
 # python3 ai.py --q 'tell me a joke'
@@ -19,7 +20,7 @@ args = parser.parse_args()
 url = 'https://api.groq.com/openai/v1/chat/completions'
 
 # API Key (Replace with your Groq AI API key if needed)
-api_key = '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'
+api_key = envdata.token
 
 # API request payload
 payload = {
@@ -29,7 +30,7 @@ payload = {
             "content": args.q
         }
     ],
-    "model": "llama3-8b-8192",
+    "model": envdata.model,
     "temperature": 1,
     "max_tokens": 1024,
     "top_p": 1,
@@ -49,6 +50,7 @@ try:
     if response.status_code == 200:
         response_result = response.json()
         jawapan = response_result['choices'][0]['message']['content']
+
         # print('\nANSWERS:\n\n' + jawapan)
 
         # console = Console()

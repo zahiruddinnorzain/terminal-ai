@@ -2,6 +2,8 @@
 ================
 
 A simple command-line application that lets you ask AI questions and receive answers directly in your terminal.
+![alt text](image.png)
+Terminal AI in vscode bash.
 
 **Getting Started**
 -------------------
